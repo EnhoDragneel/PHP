@@ -14,6 +14,10 @@ Route::get('/teste', function () {
     ]);
 });
 
-Route::post('/products', function () {
-    
+Route::prefix('products')->group(function () {
+    Route::post('/', [ProductController::class, 'store']);
+    Route::get('/', [ProductsController::class, 'index']);
+    Route::get('/', [ProductsController::class, 'show']);
+    Route::put('/{id}', [ProductsController::class, 'update']);
+    Route::delete('/{id}', [ProductsController::class, 'delete']);
 });
